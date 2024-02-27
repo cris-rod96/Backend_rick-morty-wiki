@@ -1,17 +1,21 @@
 import { Router } from "express";
 import { characterControllers } from "../../controllers/index.controller.js";
-import { jwtMiddleware } from "../../middlewares/index.middlewares.js";
+import { check } from "express-validator";
+import { validatorHelper } from "../../helpers/index.helpers.js";
+import { validatorFieldsMiddleware } from "../../middlewares/index.middlewares.js";
 
 const router = Router();
-router.post(
-  "/create",
-  jwtMiddleware.validateToken,
-  characterControllers.addCharacter
+
+router.get("/list", characterControllers.getAll);
+router.get(
+  "/view/:id",
+  [
+    check("id", "El id del personaje es obligatorio").not().isEmpty(),
+    check("id").custom(validatorHelper.characterExist),
+    validatorFieldsMiddleware,
+  ],
+  characterControllers.getByID
 );
-router.delete(
-  "/delete/:id",
-  jwtMiddleware.validateToken,
-  characterControllers.deleteCharacter
-);
+router.get("/search", characterControllers.getByName);
 
 export default router;

@@ -1,4 +1,5 @@
-import addCharacter from "./add.controller.js";
-import deleteCharacter from "./delete.controller.js";
+import getAll from "./getAll.controller.js";
+import getByID from "./getByID.controller.js";
+import getByName from "./getByName.controller.js";
 
-export default { addCharacter, deleteCharacter };
+export default { getAll, getByID, getByName };

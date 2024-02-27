@@ -1,13 +1,14 @@
-import { User } from "../../database/index.database.js";
 import { bcryptHelper } from "../../helpers/index.helpers.js";
 
 export default async (req, res) => {
   try {
-    const { id } = req.params;
+    const user = req.user;
     const data = req.body;
-    if (data.password)
+    if (data.password) {
       data.password = await bcryptHelper.encryptPasssword(data.password);
-    await User.update({ ...data }, { where: { id } });
+    }
+    await user.update({ ...data }, { where: { id } });
+    await user.save();
     return res.status(200).json({
       msg: `La información ha sido actualizada con éxito`,
     });
