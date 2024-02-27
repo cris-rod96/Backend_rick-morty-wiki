@@ -1,12 +1,34 @@
-import jwt from "jsonwebtoken";
-import { SECRET_KEY } from "../../config/index.config.js";
+import { request, response } from "express";
+import { jwtHelper } from "../../helpers/index.helpers.js";
+import { User } from "../../database/index.database.js";
 
-const generateToken = (payload) => {
-  return jwt.sign(payload, SECRET_KEY, { expiresIn: "3h" });
+const validateToken = async (req = request, res = response, next) => {
+  try {
+    const token = req.header("x-token");
+    if (!token)
+      return res.status(401).json({
+        msg: `Permiso denegado. No se encontró un token en la petición`,
+      });
+
+    const { id } = jwtHelper.verifyToken(token);
+    if (!id)
+      return res.status(401).json({
+        msg: `Permiso denegado. El token enviado no es correcto.`,
+      });
+
+    const user = await User.findByPk(id);
+    if (!user)
+      return res.status(401).json({
+        msg: `Permiso denegado. Usuario no encontrado`,
+      });
+
+    req.user = user;
+    next();
+  } catch (error) {
+    return res.status(401).json({
+      msg: `Permiso denegado. El token ingresado no es válido`,
+    });
+  }
 };
 
-const verifyToken = (token) => {
-  return jwt.verify(token, SECRET_KEY);
-};
-
-export default { generateToken, verifyToken };
+export default { validateToken };

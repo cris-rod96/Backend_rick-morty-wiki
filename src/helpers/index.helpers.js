@@ -1,3 +1,3 @@
 import bcryptHelper from "./bcrypt/index.helper.js";
-
-export { bcryptHelper };
+import jwtHelper from "./jwt/index.helper.js";
+export { bcryptHelper, jwtHelper };
