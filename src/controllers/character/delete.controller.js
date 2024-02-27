@@ -3,7 +3,7 @@ import { Character } from "../../database/index.database.js";
 export default async (req, res) => {
   try {
     const { id } = req.user;
-    const { characterID } = req.body;
+    const { id: characterID } = req.params;
 
     const deleted = await Character.destroy({
       where: {
