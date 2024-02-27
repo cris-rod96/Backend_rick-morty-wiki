@@ -1,2 +1,3 @@
 import userControllers from "./user/index.controller.js";
-export { userControllers };
+import characterControllers from "./character/index.controller.js";
+export { characterControllers, userControllers };
