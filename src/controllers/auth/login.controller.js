@@ -24,6 +24,7 @@ export default async (req, res) => {
           id: user.id,
           email: user.email,
           nick: user.nick,
+          avatar: user.avatar,
         },
 
         token,

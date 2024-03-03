@@ -39,10 +39,6 @@ export default (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      userID: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
     },
     {
       timestamps: false,

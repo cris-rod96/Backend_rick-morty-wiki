@@ -4,6 +4,7 @@ import { Character } from "../../database/index.database.js";
 export default async (req, res) => {
   try {
     const { name } = req.query;
+    console.log(name);
     const characters = await Character.findAll({
       where: {
         name: {

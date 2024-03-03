@@ -7,7 +7,7 @@ export default async (req, res) => {
     if (data.password) {
       data.password = await bcryptHelper.encryptPasssword(data.password);
     }
-    await user.update({ ...data }, { where: { id } });
+    await user.update({ ...data }, { where: { id: user.id } });
     await user.save();
     return res.status(200).json({
       msg: `La información ha sido actualizada con éxito`,
