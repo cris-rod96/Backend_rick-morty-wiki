@@ -3,11 +3,10 @@
   "module": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "node --watch index.js"
   },
   "devDependencies": {
-    "@types/bun": "latest",
-    "nodemon": "3.1.0"
+    "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
