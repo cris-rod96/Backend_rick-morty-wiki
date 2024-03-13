@@ -19,7 +19,7 @@ router.post(
   "/add",
   jwtMiddleware.validateToken,
   [
-    check("chatacterID", "El ID del personaje es obligatorio").not().isEmpty(),
+    check("characterID", "El ID del personaje es obligatorio").not().isEmpty(),
     check("characterID").custom(validatorHelper.characterExist),
     validatorFieldsMiddleware,
   ],
