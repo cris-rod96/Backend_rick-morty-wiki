@@ -1,7 +1,7 @@
 export default async (req, res) => {
   try {
     const user = req.user;
-    const { characterID } = req.body;
+    const { characterID } = req.params;
 
     const characterExist = await user.hasCharacter(characterID);
 

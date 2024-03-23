@@ -27,13 +27,8 @@ router.post(
 );
 
 router.delete(
-  "/delete",
+  "/delete/:characterID",
   jwtMiddleware.validateToken,
-  [
-    check("chatacterID", "El ID del personaje es obligatorio").not().isEmpty(),
-    check("characterID").custom(validatorHelper.characterExist),
-    validatorFieldsMiddleware,
-  ],
   favoriteControllers.removeFavorite
 );
 
