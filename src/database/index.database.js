@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize";
 import { DATABASE_URI, DB_DEPLOY } from "../config/index.config.js";
 import { CharacterModel, UserModel } from "../models/index.models.js";
 
-const conn = new Sequelize(DATABASE_URI, { logging: false, native: false });
+const conn = new Sequelize(DB_DEPLOY, { logging: false, native: false });
 
 UserModel(conn);
 CharacterModel(conn);
