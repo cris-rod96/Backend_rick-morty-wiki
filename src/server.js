@@ -19,6 +19,10 @@ server.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
   next();
 });
+
+server.get("/", (req, res) => {
+  res.send("Hi world");
+});
 // server.use("/api/v1", routes);
 server.use("/", routes);
 
