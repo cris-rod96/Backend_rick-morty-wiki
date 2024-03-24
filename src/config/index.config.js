@@ -6,5 +6,4 @@ export const {
   SECRET_KEY,
   DB_DEPLOY,
   ORIGIN_ACCEPT_URL_DEV,
-  ORIGIN_ACCEPT_URL_DEPLOY,
 } = process.env;
