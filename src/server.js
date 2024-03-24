@@ -6,8 +6,8 @@ import routes from "./routes/index.routes.js";
 const server = express();
 
 // Middlewares
-server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
-server.use(express.json());
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
 server.use(morgan("dev"));
 server.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "http://localhost:5173");
