@@ -12,7 +12,7 @@ server.use(morgan("dev"));
 server.use((req, res, next) => {
   res.header(
     "Access-Control-Allow-Origin",
-    "https://6611a80f00c5bf27c7091a77--monumental-pie-5de78b.netlify.app"
+    "https://frontend-rick-morty-wiki.vercel.app"
   );
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
