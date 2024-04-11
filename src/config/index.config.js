@@ -1,5 +1,10 @@
 import { config } from "dotenv";
 config();
+
+// Desde el config
+
+console.log(process.env.NODE_ENV && "Existe");
+
 export const {
   HOST_PORT,
   DATABASE_URI,
